@@ -63,10 +63,14 @@ const Customer = () => {
     if (error) {
       console.error('Error updating customer status:', error);
     } else {
-      // Update local state to reflect changes
-      setCustomers(customers.map(customer =>
-        customer.id === customerId ? { ...customer, status: newStatus } : customer
-      ));
+      // Update local state to reflect changes immutably
+      const updatedCustomers = customers.map(customer =>
+        customer.customer_id === customerId ? { ...customer, status: newStatus } : customer
+      );
+
+      setCustomers(updatedCustomers); // Update the full customer list
+      setFilteredCustomers(updatedCustomers); // Update the filtered list as well
+
       console.log('Customer status updated successfully');
     }
   };
@@ -98,7 +102,7 @@ const Customer = () => {
             </thead>
             <tbody>
               {filteredCustomers.map(customer => (
-                <tr key={customer.id} style={getStatusStyle(customer.status)}>
+                <tr key={customer.customer_id} style={getStatusStyle(customer.status)}>
                   <td>{customer.first_name}</td>
                   <td>{customer.last_name}</td>
                   <td>{customer.email}</td>

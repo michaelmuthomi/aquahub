@@ -33,12 +33,7 @@ const Sidebar = ({ className }) => {
               <span>Staff</span>
             </a>
           </li>
-          <li>
-            <a href="/settings">
-              <FontAwesomeIcon icon={faCog} />
-              <span>Setting</span>
-            </a>
-          </li>
+          
           <li>
             <a href="/reports">
               <FontAwesomeIcon icon={faFileAlt} />

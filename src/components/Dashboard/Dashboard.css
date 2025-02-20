@@ -1,46 +1,62 @@
-/* src/components/Dashboard/Dashboard.css */
-
 /* Dashboard container */
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Space between sections */
-  }
-  
-  /* Section styling */
-  .dashboard-section {
-    background-color: #0b9927; /* Ocean blue */
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  /* Heading style within sections */
-  .dashboard-section h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  /* Flexbox for horizontal layout */
-  .dashboard-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between boxes */
-  }
-  
-  /* Box styling */
-  .dashboard-box {
-    flex: 1;
-    background-color: #007bb5; /* Ocean blue */
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    min-width: 200px; /* Minimum width to ensure boxes don't shrink too much */
-  }
-  
-  .dashboard-box h4 {
-    margin: 0;
-    font-size: 16px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between sections */
+}
+
+/* Section styling */
+.dashboard-section {
+  background-color: #fff; /* Ocean blue */
+  color: #0c0c0c;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Heading style within sections */
+.dashboard-section h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* Flexbox for horizontal layout */
+.dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between boxes */
+}
+
+/* Box styling */
+.dashboard-box {
+  flex: 1;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 200px; /* Minimum width to ensure boxes don't shrink too much */
+}
+
+/* Completed Orders - Green */
+.completed-box {
+  background-color: #28a745; /* Green */
+}
+
+/* Pending Orders - Orange */
+.pending-box {
+  background-color: #ff9800; /* Orange */
+}
+
+/* Installation in Progress - Blue */
+.installation-box {
+  background-color: #007bb5; /* Ocean blue */
+}
+
+/* Current Orders - Purple */
+.current-orders-box {
+  background-color: #6f42c1; /* Purple */
+}
+
+.dashboard-box h4 {
+  margin: 0;
+  font-size: 16px;
+}
