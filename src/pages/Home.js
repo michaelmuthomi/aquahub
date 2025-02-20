@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QRCodeGenerator from "../components/QRCodeGenerator";
+import { useNavigate } from "react-router-dom";
+import supabase from "../supabaseClient";
 
 export default function Home() {
   const [voterId, setVoterId] = useState("");
