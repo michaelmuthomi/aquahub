@@ -10,7 +10,7 @@ export default function App() {
   return (
     <Router>
       <div className="app-container">
-        <nav>
+        <nav> 
           <Link to="/">🏠 Home</Link> | <Link to="/vote">🗳 Vote</Link> |{" "}
           <Link to="/admin">📊 Admin</Link>
         </nav>

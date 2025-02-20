@@ -1,30 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import supabase from "../supabaseClient";
 
-export default function Vote() {
-  const [vote, setVote] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+const Vote = () => {
+  const navigate = useNavigate();
+  const query = new URLSearchParams(useLocation().search);
+  const qrCodeId = query.get("id"); // Get QR Code ID from URL
 
-  const submitVote = () => {
-    if (!vote) {
-      alert("Please select a candidate.");
-      return;
+  const handleVote = async () => {
+    if (!qrCodeId) return;
+
+    const { error } = await supabase
+      .from("qr_scans")
+      .update({ has_voted: true })
+      .eq("qr_code_id", qrCodeId);
+
+    if (error) {
+      console.error("Error updating vote status:", error);
+    } else {
+      navigate("/success"); // Redirect voter to success page
     }
-    setSubmitted(true);
-    localStorage.setItem("vote", vote); // Simulating vote storage
   };
 
   return (
-    <div className="page">
-      <h1>🗳 Cast Your Vote</h1>
-      {submitted ? (
-        <h2>✅ Your vote has been submitted!</h2>
-      ) : (
-        <>
-          <button onClick={() => setVote("Candidate A")}>Vote Candidate A</button>
-          <button onClick={() => setVote("Candidate B")}>Vote Candidate B</button>
-          <button onClick={submitVote}>Submit Vote</button>
-        </>
-      )}
+    <div>
+      <h2>Cast Your Vote</h2>
+      <button onClick={handleVote}>Submit Vote</button>
     </div>
   );
-}
+};
+
+export default Vote;

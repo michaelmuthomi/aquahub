@@ -13,6 +13,27 @@ export default function Home() {
     setQrCode(`vote-${voterId}`);
   };
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const subscription = supabase
+      .channel("qr_scans")
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "qr_scans" },
+        (payload) => {
+          if (payload.new.has_voted) {
+            navigate("/success"); // Redirect all connected clients to success page
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, [navigate]);
+  
   return (
     <div className="page">
       <h1>Secure Voting System</h1>
@@ -27,3 +48,4 @@ export default function Home() {
     </div>
   );
 }
+
