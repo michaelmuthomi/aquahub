@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Vote from "./pages/Vote";
 import Admin from "./pages/Admin";
 import Success from "./pages/Success";
+import Scanned from "./pages/Scanned";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/vote" element={<Vote />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/scanned" element={<Scanned />} />
         </Routes>
       </div>
     </Router>
